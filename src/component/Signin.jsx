@@ -36,7 +36,12 @@ const Signin = () => {
       setLoading(false);
 
       if (response.data.user) {
-        localStorage.setItem("user", JSON.stringify(response.data.user));
+        const user = {
+          ...response.data.user,
+          auth_token: response.data.token || response.data.user.auth_token,
+          role: response.data.user.role, // Get role from database
+        };
+        localStorage.setItem("user", JSON.stringify(user));
         setSuccess("Login successful");
         navigate("/");
       } else {
@@ -124,7 +129,7 @@ const Signin = () => {
               color: "red",
               fontSize: "14px",
               textAlign: "center",
-              margin: 0,
+margin: 0,
             }}
           >
             {error}
@@ -149,32 +154,32 @@ const Signin = () => {
         </div>
 
         <div className="input_container">
-  <label className="input_label" htmlFor="password_field">
-    Password
-  </label>
+          <label className="input_label" htmlFor="password_field">
+            Password
+          </label>
 
-  <div className="password_wrapper">
-    <input
-      placeholder="Password"
-      title="Password"
-      name="password"
-      type={showPassword ? "text" : "password"}
-      className="input_field"
-      id="password_field"
-      required
-      value={password}
-      onChange={(e) => setPassword(e.target.value)}
-    />
+          <div className="password_wrapper">
+            <input
+              placeholder="Password"
+              title="Password"
+              name="password"
+              type={showPassword ? "text" : "password"}
+              className="input_field"
+              id="password_field"
+              required
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
 
-    <button
-      type="button"
-      onClick={() => setShowPassword(!showPassword)}
-      className="eye_btn"
-    >
-      {showPassword ? <FaEyeSlash /> : <FaEye />}
-    </button>
-  </div>
-</div>
+            <button
+              type="button"
+              onClick={() => setShowPassword(!showPassword)}
+              className="eye_btn"
+            >
+              {showPassword ? <FaEyeSlash /> : <FaEye />}
+            </button>
+          </div>
+        </div>
 
         <button
           title="Sign In"

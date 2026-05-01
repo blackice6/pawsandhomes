@@ -28,27 +28,28 @@
   color: white;
 }
 
-/* Heading for dark cake-themed website with italic style */
+/* Heading for Green & Dark Blue puppy-themed website */
 .available-cakes {
-  font-size: 3rem;                 /* Large and visible */
-  color: #f8c291;                  /* Soft pastel gold fallback */
-  text-align: center;               /* Centered */
-  font-weight: 800;                 /* Bold and prominent */
-  font-style: italic;               /* Italic for elegance */
-  letter-spacing: 2px;              /* Modern spacing */
-  margin: 2rem 0;                   /* Space above and below */
+  font-size: 3rem;
+  color: #22c55e;
+  text-align: center;
+  font-weight: 800;
+  font-style: italic;
+  letter-spacing: 2px;
+  margin: 2rem 0;
   position: relative;
   cursor: default;
   
-  /* Gradient pastel glow effect */
-  background: linear-gradient(120deg, #e4aa74, #e76e53, #3398fd);
+  /* Green gradient glow effect */
+  background: linear-gradient(120deg, #22c55e, #3b82f6, #0f172a);
   background-clip: text;
+background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
-
 }
-/* Subtle bounce like a cake on a plate */
-@keyframes cakeBounce {
+
+/* Subtle bounce like a happy puppy */
+@keyframes puppyBounce {
   0%, 100% { transform: translateY(0px); }
   50% { transform: translateY(-6px); }
 }
@@ -64,34 +65,34 @@ body {
 
 .available-cakes {
   text-align: center;
-  color: #ffcc70;
+  color: #22c55e;
   margin-top: 20px;
   margin-bottom: 30px;
   font-weight: bold;
 }
 
 .card {
-  background-color: #1e1e1e;
-  border: 1px solid #2c2c2c;
+  background-color: #1e3a8a;
+  border: 1px solid #22c55e;
   border-radius: 12px;
   color: #f5f5f5;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 10px rgba(34, 197, 94, 0.2);
 }
 
 .card-body h5 {
-  color: #ffb347;
+  color: #22c55e;
 }
 
 .card-body p {
-  color: #d6d6d6;
+  color: #bfdbfe;
 }
 
 .text-danger {
-  color: #ff7b7b !important;
+  color: #ef4444 !important;
 }
 
 .text-primary {
-  color: #ffcc70 !important;
+  color: #22c55e !important;
 }
 
 .product_img {
@@ -102,45 +103,45 @@ body {
 }
 
 .btn-outline-primary {
-  border-color: #ffcc70;
-  color: #ffcc70;
+  border-color: #22c55e;
+  color: #22c55e;
   background-color: transparent;
 }
 
 .btn-outline-primary:hover {
-  background-color: #ffcc70;
-  color: #121212;
+  background-color: #22c55e;
+  color: #0f172a;
 }
 
 form .form-control {
-  background-color: #1e1e1e;
-  border: 1px solid #333;
+  background-color: #1e3a8a;
+  border: 1px solid #22c55e;
   color: #f5f5f5;
 }
 
 form .form-control::placeholder {
-  color: #aaa;
+  color: #94a3b8;
 }
 
 form .btn-primary {
-  background-color: #ffb347;
+  background-color: #22c55e;
   border: none;
-  color: #121212;
+  color: white;
 }
 
 form .btn-primary:hover {
-  background-color: #ffa726;
-  color: #121212;
+  background-color: #16a34a;
+  color: white;
 }
 
 form .btn-secondary {
-  background-color: #2c2c2c;
-  border: none;
-  color: #f5f5f5;
+  background-color: #1e3a8a;
+  border: 1px solid #22c55e;
+  color: #22c55e;
 }
 
 form .btn-secondary:hover {
-  background-color: #3a3a3a;
+  background-color: #172554;
 }
 
 .suggestion-item {

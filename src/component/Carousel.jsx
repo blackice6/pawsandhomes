@@ -1,13 +1,13 @@
 import React from "react";
-import "../css/Carousel.css"; // optional custom styles
-import chocolate from "../image/chocolate.jpg";
-import birthday from "../image/birthday.jpg";
-import strawberry from "../image/strawberry.jpg";
+import "../css/Carousel.css";
+import heroDog from "../images/hero-dog.jpg";
+import dogs from "../images/dogs.jpg";
+import pupies1 from "../images/pupies1.jpg";
 
 const CarouselComponent = () => {
   return (
     <div
-        id="cakeCarousel"
+        id="dogCarousel"
         className="carousel slide carousel-dark"
         data-bs-ride="carousel"
         data-bs-interval="5000"
@@ -16,7 +16,7 @@ const CarouselComponent = () => {
       <div className="carousel-indicators">
         <button
           type="button"
-          data-bs-target="#cakeCarousel"
+          data-bs-target="#dogCarousel"
           data-bs-slide-to="0"
           className="active"
           aria-current="true"
@@ -24,13 +24,13 @@ const CarouselComponent = () => {
         ></button>
         <button
           type="button"
-          data-bs-target="#cakeCarousel"
+          data-bs-target="#dogCarousel"
           data-bs-slide-to="1"
           aria-label="Slide 2"
         ></button>
         <button
           type="button"
-          data-bs-target="#cakeCarousel"
+          data-bs-target="#dogCarousel"
           data-bs-slide-to="2"
           aria-label="Slide 3"
         ></button>
@@ -38,42 +38,45 @@ const CarouselComponent = () => {
       <div className="carousel-inner">
         <div className="carousel-item active">
           <img
-            src= {chocolate} 
+            src= {heroDog} 
             className="d-block w-100"
-            alt="Chocolate Cake"
+            alt="Happy Puppy"
+            style={{ height: "400px", objectFit: "cover" }}
           />
-          <div class="carousel-caption">
-            <h5>Delicious Chocolate Cake</h5>
-            <p>Rich, creamy, and perfect for any occasion.</p>
+          <div className="carousel-caption">
+            <h5>Find Your Perfect Companion</h5>
+            <p>Adopt a loving puppy and give them a forever home.</p>
           </div>
         </div>
         <div className="carousel-item">
           <img
-            src={strawberry}
+            src={dogs}
             className="d-block w-100"
-            alt="Strawberry Cake"
+            alt="Friendly Dogs"
+            style={{ height: "400px", objectFit: "cover" }}
           />
-          <div class="carousel-caption">
-            <h5>Strawberry Delight</h5>
-            <p>Fresh strawberries and cream for the perfect treat.</p>
+          <div className="carousel-caption">
+            <h5>Variety of Breeds</h5>
+            <p>Choose from Golden Retrievers, Labradors, Huskies and more.</p>
           </div>
         </div>
         <div className="carousel-item">
           <img
-            src={birthday}
+            src={pupies1}
             className="d-block w-100"
-            alt="Birthday Cake"
+            alt="Cute Puppies"
+            style={{ height: "400px", objectFit: "cover" }}
           />
-          <div class="carousel-caption">
-            <h5>Birthday Surprise</h5>
-            <p>Colorful, fun, and unforgettable cakes for every party.</p>
+          <div className="carousel-caption">
+            <h5>Healthy & Happy Puppies</h5>
+            <p>All our puppies are vaccinated and well cared for.</p>
           </div>
         </div>
       </div>
       <button
         className="carousel-control-prev"
         type="button"
-        data-bs-target="#cakeCarousel"
+        data-bs-target="#dogCarousel"
         data-bs-slide="prev"
       >
         <span className="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -82,7 +85,7 @@ const CarouselComponent = () => {
       <button
         className="carousel-control-next"
         type="button"
-        data-bs-target="#cakeCarousel"
+        data-bs-target="#dogCarousel"
         data-bs-slide="next"
       >
         <span className="carousel-control-next-icon" aria-hidden="true"></span>

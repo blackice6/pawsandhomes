@@ -41,10 +41,11 @@ def signup():
 
         # structure an sql to insert the details received from the form
         # The %s is a placeholder -> A place holder it stands in places of actual values i.e we shall replace later on
-        sql = "INSERT INTO users(username,email,phone,password) VALUES(%s, %s, %s, %s)"
+        sql = "INSERT INTO users(username,email,phone,password,role) VALUES(%s, %s, %s, %s, %s)"
 
         # create a tuple that will hold all the data gotten from the form
-        data = (username, email, phone, password)
+        # Default role is 'customer'
+        data = (username, email, phone, password, "customer")
 
         # by use of the cursor, execute the sql as you replace the placeholder with the actual values
         cursor.execute(sql, data)
@@ -63,7 +64,7 @@ def signin():
         email = request.form.get("email")
         password = request.form.get("password")
 
-        connection = pymysql.connect(
+connection = pymysql.connect(
             host="localhost",
             user="root",
             password="",
@@ -76,14 +77,19 @@ def signin():
         user = cursor.fetchone()
         connection.close()
 
-        if user and check_password_hash(user["password"], password):
+if user and check_password_hash(user["password"], password):
+            # Generate authentication token
+            auth_token = generate_token(32)
             return jsonify({
                 "message": "User logged in successfully",
+                "token": auth_token,
                 "user": {
                     "user_id": user["user_id"],
                     "username": user.get("username"),
                     "email": user["email"],
-                    "is_admin": user.get("is_admin", 0)
+                    "is_admin": user.get("is_admin", 0),
+                    "auth_token": auth_token,
+                    "role": user.get("role", "customer")
                 }
             })
         else:

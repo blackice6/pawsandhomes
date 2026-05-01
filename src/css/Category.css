@@ -5,7 +5,7 @@
 
 .category-title {
   font-size: 28px;
-  color: #7b4b2a;
+  color: #22c55e;
   margin-bottom: 20px;
 }
 
@@ -20,21 +20,23 @@
   padding: 10px 20px;
   border: none;
   border-radius: 25px;
-  background: #fff5e4;
-  color: #7b4b2a;
+  background: #1e3a8a;
+  color: #bfdbfe;
   font-size: 15px;
   cursor: pointer;
   transition: all 0.3s ease;
+  border: 1px solid #22c55e;
 }
 
 .category-btn:hover {
-  background: #f8c8dc;
+  background: #22c55e;
+  color: #0f172a;
   transform: translateY(-3px);
 }
 
 .category-btn.active {
-  background: #7b4b2a;
-  color: white;
+  background: #22c55e;
+  color: #0f172a;
 }
 
 @media (max-width: 768px) {

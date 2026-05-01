@@ -22,7 +22,7 @@
 }
 
 .logo_container::before {
-  content: "🎂";
+  content: "🐕";
   font-size: 30px;
 }
 

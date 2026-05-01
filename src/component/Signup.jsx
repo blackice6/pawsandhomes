@@ -12,6 +12,7 @@ const Signup = () => {
 
   // extra hook for confirm password
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [role, setRole] = useState("customer");
 
   // status hooks
   const [loading, setLoading] = useState("");
@@ -38,6 +39,7 @@ const Signup = () => {
       formdata.append("email", email);
       formdata.append("password", password);
       formdata.append("phone", phone);
+      formdata.append("role", role);
 
       const response = await axios.post(
         "https://blackice6.alwaysdata.net/api/signup",
@@ -132,6 +134,20 @@ const Signup = () => {
             required
           />
           <span>Confirm Password</span>
+        </label>
+
+        <label className="role-select-label">
+          <span>Register as</span>
+          <select
+            className="input"
+            value={role}
+            onChange={(e) => setRole(e.target.value)}
+          >
+            <option value="customer">Customer</option>
+            <option value="delivery">Delivery</option>
+            <option value="distributer">Distributer</option>
+            <option value="administrator">Administrator</option>
+          </select>
         </label>
 
         <button className="submit" type="submit">

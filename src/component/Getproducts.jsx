@@ -19,13 +19,16 @@ const Getproduct = () => {
 
   const navigate = useNavigate();
   const searchRef = useRef(null);
+  const user = JSON.parse(localStorage.getItem("user"));
 
   const img_url = "https://blackice6.alwaysdata.net/static/images/";
 
   const fetchProducts = async () => {
     try {
       setLoading(true);
+      setError("");
 
+      // Fetch products - API doesn't require auth token
       const response = await axios.get(
         "https://blackice6.alwaysdata.net/api/get_products"
       );
@@ -33,7 +36,11 @@ const Getproduct = () => {
       setProducts(response.data);
       setFilteredProducts(response.data);
     } catch (err) {
-      setError(err.message);
+      setError(
+        err.response?.data?.message ||
+          err.message ||
+          "Unable to fetch products."
+      );
     } finally {
       setLoading(false);
     }
@@ -115,7 +122,7 @@ const Getproduct = () => {
       <div className="row">
         <div className="col-12">
           <h1 className="available-cakes text-center mb-4">
-            Available Cakes
+            Available Puppies
           </h1>
         </div>
 
@@ -142,7 +149,7 @@ const Getproduct = () => {
               <input
                 type="text"
                 className="form-control ps-5"
-                placeholder="Search Cakes..."
+                placeholder="Search puppies..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 onFocus={() => {
@@ -203,7 +210,7 @@ const Getproduct = () => {
         {/* No Products */}
         {!loading && filteredProducts.length === 0 && (
           <div className="col-12">
-            <h5 className="text-center">No cakes found</h5>
+            <h5 className="text-center">No puppies found</h5>
           </div>
         )}
 
@@ -237,14 +244,26 @@ const Getproduct = () => {
                   KES {product.product_cost}
                 </h4>
 
-                <button
-                  className="btn btn-outline-primary mt-auto rounded-pill"
-                  onClick={() =>
-                    navigate("/makepayment", { state: { product } })
-                  }
-                >
-                  Purchase Now
-                </button>
+                {user?.role_name?.toLowerCase() === "customer" || user?.role?.toLowerCase() === "customer" ? (
+                  <button
+                    className="btn btn-outline-primary mt-auto rounded-pill"
+                    onClick={() =>
+                      navigate("/makepayment", { state: { product } })
+                    }
+                  >
+                    Purchase Now
+                  </button>
+                ) : (
+                  <button
+                    className="btn btn-outline-secondary mt-auto rounded-pill"
+                    disabled={!user}
+                    onClick={() => {
+                      if (!user) navigate("/signin");
+                    }}
+                  >
+                    {user ? "Customer only" : "Sign in to purchase"}
+                  </button>
+                )}
               </div>
             </div>
           </div>

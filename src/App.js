@@ -2,7 +2,7 @@
 import './App.css';
 import "./index.css"; // make sure this imports the CSS above
 
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Signin from './component/Signin';
 import Signup from './component/Signup';
@@ -23,16 +23,21 @@ function App() {
       <div className="App">
         <Navbar />
 
-      <Routes>
+<Routes>
         <Route path ='/' element={<Getproducts />} />
-        <Route path='/addcakes' element={
-          <AdminRoute>{<Addproducts />}</AdminRoute>
-        } />
-        < Route path='/signup' element={<Signup />} />
+<Route path='/ourdogs' element={<Getproducts />} />
+        <Route
+          path='/addproducts'
+          element={<AdminRoute allowedRoles={["administrator", "distributer"]}><Addproducts /></AdminRoute>}
+        />
+        <Route path='/signup' element={<Signup />} />
         <Route path='/signin' element={<Signin />} />
-        <Route path='/makepayment'element={<Makepayment />}/>
-        <Route path='/about'element={<About />}/>
-        <Route path='/contact'element={<Contact/>}/>
+        <Route
+          path='/makepayment'
+          element={<AdminRoute allowedRoles={["customer"]}><Makepayment /></AdminRoute>}
+        />
+        <Route path='/about' element={<About />} />
+        <Route path='/contact' element={<Contact />} />
         <Route path='*' element={<Notfound />} />
       </Routes>
 

@@ -56,18 +56,18 @@ const response = await axios.post(
   return (
     <div className="contact-page">
       <div className="contact-container">
-        <div className="contact-left">
-          <h1>Contact Merble Cakes</h1>
+<div className="contact-left">
+          <h1>Contact Paws & Homes</h1>
           <p>
-            We would love to hear from you. Whether you want to place an order,
-            ask about our Merble cakes, or share your sweet experience, our
+            We would love to hear from you. Whether you want to adopt a puppy,
+            ask about our available dogs, or share your experience, our
             team is ready to help.
           </p>
 
           <div className="contact-info">
             <p><strong>📍 Address:</strong> Kisumu, Kenya</p>
             <p><strong>📞 Phone:</strong> +254 729 932 162</p>
-            <p><strong>✉️ Email:</strong> Merblecake@gmail.com</p>
+            <p><strong>✉️ Email:</strong> pawsandhomes@gmail.com</p>
             <p><strong>⏰ Opening Hours:</strong> Mon - Sat, 8:00 AM - 6:00 PM</p>
           </div>
         </div>

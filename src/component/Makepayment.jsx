@@ -45,7 +45,7 @@ const Makepayment = () => {
       <div className="row justify-content-center">
         <div className="col-md-8">
           <div className="d-flex justify-content-between align-items-center mb-4">
-            <h1 className="text-primary">💳 Lipa na M-PESA</h1>
+<h1 className="text-primary">🐕 Adopt via M-PESA</h1>
             <button 
               className="btn btn-outline-light" 
               onClick={() => navigate("/")}
@@ -85,12 +85,12 @@ const Makepayment = () => {
                   }}
                 />
 
-                <button 
+<button 
                   type="submit" 
                   className="btn btn-success w-100"
                   style={{ fontWeight: 'bold' }}
                 >
-                  Make Payment
+                  Adopt Now
                 </button>
               </form>
             </div>

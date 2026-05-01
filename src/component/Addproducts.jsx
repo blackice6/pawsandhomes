@@ -31,10 +31,16 @@ const Addproducts = () => {
 
       const user = JSON.parse(localStorage.getItem("user"));
       formdata.append("user_id", user.user_id);
+      const token = user?.auth_token || user?.token;
 
       const response = await axios.post(
         "https://blackice6.alwaysdata.net/api/add_product",
-        formdata
+        formdata,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
       );
 
       setLoading(false);
@@ -65,10 +71,10 @@ const Addproducts = () => {
         <div className="row justify-content-center">
           <div className="col-md-8 col-lg-6">
             <div className="addcake-card shadow-lg">
-              <div className="text-center mb-4">
-                <h2 className="addcake-title">Add a New Cake</h2>
+<div className="text-center mb-4">
+                <h2 className="addcake-title">Add a New Puppy</h2>
                 <p className="addcake-subtitle">
-                  Upload your delicious cake details in style.
+                  Add your adorable puppy details to the website.
                 </p>
               </div>
 
@@ -78,11 +84,11 @@ const Addproducts = () => {
               {error && <h5 className="error-msg text-center">{error}</h5>}
 
               <form onSubmit={handleSubmit}>
-                <div className="mb-3">
-                  <label className="form-label custom-label">Cake Name</label>
+<div className="mb-3">
+                  <label className="form-label custom-label">Puppy Name</label>
                   <input
                     type="text"
-                    placeholder="Enter cake name"
+                    placeholder="Enter puppy name"
                     className="form-control custom-input"
                     required
                     value={product_name}
@@ -90,10 +96,10 @@ const Addproducts = () => {
                   />
                 </div>
 
-                <div className="mb-3">
+<div className="mb-3">
                   <label className="form-label custom-label">Description</label>
                   <textarea
-                    placeholder="Enter the cake description"
+                    placeholder="Enter the puppy description"
                     className="form-control custom-input"
                     rows="4"
                     required
@@ -106,7 +112,7 @@ const Addproducts = () => {
                   <label className="form-label custom-label">Price (KES)</label>
                   <input
                     type="number"
-                    placeholder="Enter the price of the cake"
+                    placeholder="Enter the price of the puppy"
                     className="form-control custom-input"
                     required
                     value={product_cost}
@@ -115,7 +121,7 @@ const Addproducts = () => {
                 </div>
 
                 <div className="mb-4">
-                  <label className="form-label custom-label">Cake Photo</label>
+                  <label className="form-label custom-label">Dog Photo</label>
                   <input
                     type="file"
                     className="form-control custom-file"
@@ -126,26 +132,28 @@ const Addproducts = () => {
                   />
                 </div>
 
-                 <div className="mb-3">
-                  <label className="form-label custom-label">Category</label>
+<div className="mb-3">
+                  <label className="form-label custom-label">Breed</label>
                   <select
                     className="form-control custom-input"
                     required
                     value={category}
                     onChange={(e) => setCategory(e.target.value)}
                   >
-                    <option value="">Select Category</option>
-                    <option value="Birthday Cakes">Birthday Cakes</option>
-                    <option value="Wedding Cakes">Wedding Cakes</option>
-                    <option value="Chocolate Cakes">Chocolate Cakes</option>
-                    <option value="Cupcakes">Cupcakes</option>
-                    <option value="Buttercream Cakes">Buttercream Cakes</option>
-                    <option value="Kids Cakes">Kids Cakes</option>
+                    <option value="">Select Breed</option>
+                    <option value="Golden Retriever">Golden Retriever</option>
+                    <option value="German Shepherd">German Shepherd</option>
+                    <option value="Labrador">Labrador</option>
+                    <option value="Bulldog">Bulldog</option>
+                    <option value="Beagle">Beagle</option>
+                    <option value="Poodle">Poodle</option>
+                    <option value="Husky">Husky</option>
+                    <option value="Other">Other</option>
                   </select>
                 </div>
 
                 <button type="submit" className="btn addcake-btn w-100">
-                  Add Cake
+                  Add Puppy
                 </button>
               </form>
             </div>

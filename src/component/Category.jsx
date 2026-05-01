@@ -4,12 +4,13 @@ import "../css/Category.css";
 const Categories = ({ onCategorySelect }) => {
   const categories = [
     "All",
-    "Birthday Cakes",
-    "Wedding Cakes",
-    "Chocolate Cakes",
-    "Cupcakes",
-    "Buttercream Cakes",
-    "Kids Cakes"
+    "Golden Retriever",
+    "German Shepherd",
+    "Labrador",
+    "Bulldog",
+    "Beagle",
+    "Poodle",
+    "Husky"
   ];
 
   const [activeCategory, setActiveCategory] = useState("All");
@@ -21,7 +22,7 @@ const Categories = ({ onCategorySelect }) => {
 
   return (
     <div className="categories-section">
-      <h2 className="category-title">Browse by Category</h2>
+      <h2 className="category-title">Browse by Breed</h2>
 
       <div className="categories-container">
         {categories.map((category, index) => (
