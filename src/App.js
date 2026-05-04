@@ -1,4 +1,3 @@
-
 import './App.css';
 import "./index.css"; // make sure this imports the CSS above
 
@@ -7,7 +6,8 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import Signin from './component/Signin';
 import Signup from './component/Signup';
 import Addproducts from './component/Addproducts';
-import Getproducts from './component/Getproducts';
+import Home from './component/Home';
+import OuDogs from './component/OuDogs';
 import Makepayment from './component/Makepayment';
 import Notfound from './component/Notfound';
 import Navbar from './component/Navbar';
@@ -16,7 +16,6 @@ import Contact from './component/Contact';
 import AdminRoute from './component/AdminRoute';
 import Footer from './component/Footer';
 
-
 function App() {
   return (
     <Router>
@@ -24,8 +23,8 @@ function App() {
         <Navbar />
 
 <Routes>
-        <Route path ='/' element={<Getproducts />} />
-<Route path='/ourdogs' element={<Getproducts />} />
+        <Route path='/' element={<Home />} />
+        <Route path='/ourdogs' element={<OuDogs />} />
         <Route
           path='/addproducts'
           element={<AdminRoute allowedRoles={["administrator", "distributer"]}><Addproducts /></AdminRoute>}
@@ -34,7 +33,7 @@ function App() {
         <Route path='/signin' element={<Signin />} />
         <Route
           path='/makepayment'
-          element={<AdminRoute allowedRoles={["customer"]}><Makepayment /></AdminRoute>}
+          element={<Makepayment />}
         />
         <Route path='/about' element={<About />} />
         <Route path='/contact' element={<Contact />} />

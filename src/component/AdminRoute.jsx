@@ -1,5 +1,6 @@
 import React from "react";
 import { Navigate, useLocation } from "react-router-dom";
+import { getUserRoleId } from "../utils/roleUtils.js";
 
 const ROLE_NAME_BY_ID = {
   1: "administrator",
@@ -10,10 +11,8 @@ const ROLE_NAME_BY_ID = {
 
 const normalizeRole = (user) => {
   if (!user) return null;
-  if (user.role_name) return user.role_name.toString().toLowerCase();
-  if (user.role) return user.role.toString().toLowerCase();
-  if (user.role_id) return ROLE_NAME_BY_ID[user.role_id] || null;
-  return null;
+  const roleId = getUserRoleId(user);
+  return ROLE_NAME_BY_ID[roleId] || null;
 };
 
 const AdminRoute = ({ children, allowedRoles = [] }) => {

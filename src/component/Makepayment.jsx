@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import Loader from './Loader';
+import CapybaraLoader from './CapybaraLoader';
 
 const Makepayment = () => {
   const { product } = useLocation().state || {};
@@ -67,7 +67,7 @@ const Makepayment = () => {
               <h3 className="text-warning mb-4">KES {product.product_cost}</h3>
 
               <form onSubmit={handlesubmit}>
-                {loading && <Loader />}
+{loading && <CapybaraLoader />}
                 {success && <div className="alert alert-success">{success}</div>}
                 {error && <div className="alert alert-danger">{error}</div>}
 

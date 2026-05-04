@@ -1,7 +1,8 @@
-/* Modern Header Styles - Green & Dark Blue Theme */
+/* Modern Header Styles - Lively Green Illuminated Theme */
 .header-modern {
-  background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #0f172a);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.15) 0%, rgba(5, 150, 105, 0.1) 50%, rgba(34, 197, 94, 0.15));
+  backdrop-filter: blur(20px);
+  box-shadow: 0 8px 32px rgba(34, 197, 94, 0.2);
   padding: 12px 0;
   position: sticky;
   top: 0;
@@ -9,22 +10,25 @@
 }
 
 .text-neon {
-  color: #22c55e;
-  text-shadow: 0 0 10px rgba(34, 197, 94, 0.6);
+  background: linear-gradient(135deg, #22c55e, #10b981, #059669);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 0 20px rgba(34, 197, 94, 0.6);
 }
 
 .glow-effect {
-  box-shadow: 0 0 15px rgba(34, 197, 94, 0.4);
+  box-shadow: 0 0 20px rgba(34, 197, 94, 0.5);
   transition: all 0.3s ease;
 }
 
 .glow-effect:hover {
-  box-shadow: 0 0 25px rgba(34, 197, 94, 0.7);
+  box-shadow: 0 0 30px rgba(34, 197, 94, 0.8);
 }
 
 .hover-neon:hover {
   color: #22c55e !important;
-  text-shadow: 0 0 10px rgba(34, 197, 94, 0.6);
+  text-shadow: 0 0 15px rgba(34, 197, 94, 0.8);
   transition: all 0.3s ease;
 }
 
@@ -35,16 +39,17 @@
 
 .search-input-modern {
   background: rgba(34, 197, 94, 0.1);
-  border: 2px solid rgba(34, 197, 94, 0.3);
+  border: 2px solid rgba(34, 197, 94, 0.4);
   border-radius: 25px;
   padding: 8px 15px 8px 40px;
-  color: #fff;
+  color: #f8fafc;
   width: 200px;
   transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(34, 197, 94, 0.1);
 }
 
 .search-input-modern::placeholder {
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(248, 250, 252, 0.8);
 }
 
 .search-input-modern:focus {
@@ -52,6 +57,7 @@
   border-color: #22c55e;
   background: rgba(34, 197, 94, 0.15);
   width: 250px;
+  box-shadow: 0 0 20px rgba(34, 197, 94, 0.3);
 }
 
 .search-icon-modern {
@@ -59,24 +65,25 @@
   left: 15px;
   top: 50%;
   transform: translateY(-50%);
-  color: rgba(255, 255, 255, 0.6);
+  color: #22c55e;
 }
 
 /* Modern Button Styles */
 .btn-modern {
-  background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+  background: linear-gradient(135deg, #22c55e 0%, #10b981 50%, #059669 100%);
   color: white;
   border: none;
   border-radius: 25px;
   padding: 8px 20px;
   font-weight: 600;
   transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3);
 }
 
 .btn-modern:hover {
-  background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+  background: linear-gradient(135deg, #16a34a 0%, #059669 100%);
   transform: scale(1.05);
-  box-shadow: 0 0 15px rgba(34, 197, 94, 0.5);
+  box-shadow: 0 8px 25px rgba(34, 197, 94, 0.5);
   color: white;
 }
 
@@ -93,13 +100,14 @@
 .btn-modern-outline:hover {
   background: #22c55e;
   color: white;
-  box-shadow: 0 0 15px rgba(34, 197, 94, 0.5);
+  box-shadow: 0 0 20px rgba(34, 197, 94, 0.5);
 }
 
 /* Legacy styles maintained for compatibility */
 .cake-navbar {
-  background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #0f172a);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.15) 0%, rgba(5, 150, 105, 0.1) 50%, rgba(34, 197, 94, 0.15));
+  backdrop-filter: blur(20px);
+  box-shadow: 0 8px 32px rgba(34, 197, 94, 0.2);
   padding: 12px 0;
   position: sticky;
   top: 0;
@@ -109,13 +117,16 @@
 .brand-logo {
   font-size: 1.8rem;
   font-weight: bold;
-  color: #22c55e !important;
+  background: linear-gradient(135deg, #22c55e, #10b981);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   letter-spacing: 1px;
   text-shadow: 0 0 10px rgba(34, 197, 94, 0.4);
 }
 
 .cake-link {
-  color: #bfdbfe !important;
+  color: #e2e8f0 !important;
   font-weight: 600;
   margin: 0 8px;
   transition: all 0.3s ease;
@@ -130,17 +141,18 @@
 }
 
 .order-btn {
-  background: #22c55e;
+  background: linear-gradient(135deg, #22c55e, #10b981);
   color: white !important;
   padding: 8px 18px !important;
   border-radius: 25px;
   font-weight: bold;
   transition: 0.3s ease;
   margin-left: 10px;
+  box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3);
 }
 
 .order-btn:hover {
-  background: #16a34a;
+  background: linear-gradient(135deg, #16a34a, #059669);
   transform: scale(1.05);
 }
 
@@ -151,7 +163,7 @@
 }
 
 .logout-btn {
-  background: #dc3545;
+  background: linear-gradient(135deg, #6b7280, #4b5563);
   color: white !important;
   border: none;
   padding: 8px 18px;
@@ -163,23 +175,20 @@
 }
 
 .logout-btn:hover {
-  background: #b02a37;
+  background: linear-gradient(135deg, #4b5563, #374151);
   transform: scale(1.05);
 }
 
-
-
-
 .clear-btn {
   border-radius: 20px;
-  background-color: #6c757d;
+  background-color: #6b7280;
   color: white;
   border: none;
   padding: 8px 16px;
 }
 
 .clear-btn:hover {
-  background-color: #5a6268;
+  background-color: #4b5563;
   color: white;
 }
 
@@ -206,7 +215,7 @@
   top: 50%;
   left: 12px;
   transform: translateY(-50%);
-  color: gray;
+  color: #22c55e;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -230,24 +239,24 @@
 }
 
 .search-btn {
-  background-color: #22c55e;
+  background-color: linear-gradient(135deg, #22c55e, #10b981);
   color: white;
   border: none;
 }
 
 .search-btn:hover {
-  background-color: #16a34a;
+  background-color: linear-gradient(135deg, #16a34a, #059669);
   color: white;
 }
 
 .clear-btn {
-  background-color: #6c757d;
+  background-color: #6b7280;
   color: white;
   border: none;
 }
 
 .clear-btn:hover {
-  background-color: #5a6268;
+  background-color: #4b5563;
   color: white;
 }
 
@@ -256,24 +265,24 @@
   top: calc(100% + 6px);
   left: 0;
   width: 100%;
-  background-color: #222;
-  border: 1px solid #444;
+  background-color: rgba(34, 197, 94, 0.1);
+  border: 1px solid #10b981;
   border-radius: 8px;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 6px 12px rgba(34, 197, 94, 0.3);
   z-index: 1000;
-  overflow: hidden;
+  backdrop-filter: blur(10px);
 }
 
 .suggestion-item {
   padding: 10px 14px;
-  color: white;
-  background-color: #222;
+  color: #f8fafc;
+  background-color: rgba(34, 197, 94, 0.1);
   cursor: pointer;
-  border-bottom: 1px solid #333;
+  border-bottom: 1px solid #10b981;
 }
 
 .suggestion-item:hover {
-  background-color: #333;
+  background-color: rgba(16, 163, 74, 0.3);
 }
 
 .suggestion-item:last-child {
@@ -307,7 +316,8 @@
 .username-label {
   font-weight: 600;
   font-style: italic;
-  color: #ffd700; /* Gold color to pop on dark theme */
+  color: #f8fafc; /* Bright white for illumination */
   margin-right: 1rem;
   cursor: default;
+  text-shadow: 0 0 5px rgba(34, 197, 94, 0.3);
 }

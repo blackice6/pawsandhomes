@@ -1,0 +1,455 @@
+/* Reference design CSS for modern puppy adoption site - lively green theme */
+
+/* Page layout */
+.reference-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.05) 0%, #0f172a 50%, rgba(5, 150, 105, 0.05) 100%);
+  backdrop-filter: blur(5px);
+}
+
+.reference-main {
+  min-height: calc(100vh - 200px);
+}
+
+.reference-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Hero Section */
+.reference-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  padding: 100px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.reference-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 20% 80%, rgba(34, 197, 94, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.reference-hero-copy {
+  z-index: 2;
+}
+
+.reference-eyebrow {
+  display: inline-block;
+  background: linear-gradient(135deg, #22c55e, #10b981);
+  color: white;
+  padding: 8px 20px;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
+}
+
+.reference-hero-title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.reference-hero-accent {
+  background: linear-gradient(135deg, #22c55e, #10b981);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.reference-hero-text {
+  font-size: 1.25rem;
+  color: #cbd5e1;
+  line-height: 1.7;
+  margin-bottom: 2.5rem;
+  max-width: 500px;
+}
+
+.reference-hero-actions {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.reference-primary-button {
+  background: linear-gradient(135deg, #22c55e, #10b981);
+  color: white;
+  border: none;
+  padding: 16px 32px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 8px 25px rgba(34, 197, 94, 0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+.reference-primary-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s;
+}
+
+.reference-primary-button:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(34, 197, 94, 0.5);
+}
+
+.reference-primary-button:hover::before {
+  left: 100%;
+}
+
+.reference-secondary-button {
+  background: transparent;
+  color: #22c55e;
+  border: 2px solid #22c55e;
+  padding: 14px 28px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.reference-secondary-button:hover {
+  background: #22c55e;
+  color: white;
+  box-shadow: 0 10px 30px rgba(34, 197, 94, 0.4);
+  transform: translateY(-2px);
+}
+
+.reference-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 30px;
+  margin-top: 4rem;
+}
+
+.reference-stat {
+  text-align: center;
+}
+
+.reference-stat h3 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #22c55e, #10b981);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 8px;
+  animation: countUp 2s ease-out;
+}
+
+.reference-stat p {
+  color: #94a3b1;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.reference-hero-visual {
+  z-index: 1;
+}
+
+.reference-hero-image-shell {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 50px 100px rgba(0,0,0,0.5);
+}
+
+.reference-hero-image {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+}
+
+.reference-quote-card {
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+  right: 30px;
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.9), rgba(5, 150, 105, 0.9));
+  color: white;
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+  backdrop-filter: blur(20px);
+}
+
+.reference-quote-card p {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+
+.reference-quote-card small {
+  opacity: 0.9;
+  font-weight: 500;
+}
+
+/* Feature Grid */
+.reference-feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+  padding: 100px 0;
+}
+
+.reference-feature-card {
+  background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 24px;
+  padding: 40px 30px;
+  text-align: center;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.reference-feature-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #22c55e, #10b981, #059669);
+}
+
+.reference-feature-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #22c55e, #10b981);
+  color: white;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  box-shadow: 0 10px 25px rgba(34, 197, 94, 0.3);
+}
+
+.reference-feature-card h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: #f8fafc;
+}
+
+.reference-feature-card p {
+  color: #cbd5e1;
+  line-height: 1.7;
+  font-size: 1rem;
+}
+
+.reference-feature-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+  border-color: rgba(34, 197, 94, 0.3);
+}
+
+/* Arrivals Section */
+.reference-arrivals {
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.05) 0%, transparent 50%);
+  position: relative;
+}
+
+.reference-arrivals::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #22c55e, transparent);
+}
+
+.reference-arrivals-header h2 {
+  font-size: 3rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #22c55e, #10b981);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1rem;
+}
+
+.reference-filter-bar {
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(20px);
+  border-radius: 50px;
+  padding: 8px 20px;
+  border: 1px solid rgba(34, 197, 94, 0.2);
+}
+
+.reference-filter-pill {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 50px;
+  background: transparent;
+  color: #cbd5e1;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.reference-filter-pill.active,
+.reference-filter-pill:hover {
+  background: linear-gradient(135deg, #22c55e, #10b981);
+  color: white;
+  box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3);
+}
+
+.reference-product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.reference-arrivals-note {
+  color: #cbd5e1;
+  font-weight: 500;
+  margin: 0 auto 24px;
+  max-width: 520px;
+  text-align: center;
+}
+
+.reference-product-card {
+  background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.04) 100%);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  backdrop-filter: blur(10px);
+}
+
+.reference-product-card:hover {
+  transform: translateY(-12px) scale(1.02);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+  border-color: rgba(34, 197, 94, 0.3);
+}
+
+.reference-product-image-wrap {
+  position: relative;
+  height: 220px;
+  overflow: hidden;
+}
+
+.reference-product-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.reference-product-card:hover .reference-product-image {
+  transform: scale(1.1);
+}
+
+.reference-product-body {
+  padding: 25px;
+}
+
+.reference-product-name {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #f8fafc;
+  margin-bottom: 5px;
+}
+
+.reference-product-breed {
+  color: #94a3b1;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.reference-product-description {
+  color: #cbd5e1;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.reference-adopt-button {
+  background: linear-gradient(135deg, #22c55e, #10b981);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3);
+}
+
+.reference-adopt-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(34, 197, 94, 0.5);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .reference-hero {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 60px 0;
+  }
+
+  .reference-hero-actions {
+    flex-direction: column;
+  }
+
+  .reference-stats {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .reference-feature-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    padding: 60px 0;
+  }
+
+  .reference-product-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .reference-hero-title {
+    font-size: 2.2rem;
+  }
+
+  .reference-arrivals-header h2 {
+    font-size: 2rem;
+  }
+}

@@ -1,0 +1,1 @@
+- [x] Step 4: Test by running npm start and verify webpack compiles without errors
