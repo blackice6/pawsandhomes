@@ -17,7 +17,7 @@ import Contact from './component/Contact';
 import AdminRoute from './component/AdminRoute';
 import Footer from './component/Footer';
 import { CartProvider } from './context/CartContext';
-import Chatbot from './component/Chatbot';
+
 import Cart from './component/Cart';
 
 function App() {
@@ -51,7 +51,7 @@ function App() {
             <Route path='/contact' element={<Contact />} />
             <Route path='*' element={<Notfound />} />
           </Routes>
-          <Chatbot />
+
           <Footer />
           <Cart isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
         </div>

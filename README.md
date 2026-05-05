@@ -1,39 +1,50 @@
-# Paws & Homes Rescue Center 🐾
+# Paws & Homes Pet Rescue Platform
 
-Pet adoption web app with smart PawsBot chatbot.
+## Features
+- Pet product catalog & cart (customer role)
+- PawsBot AI Chatbot (adoption info)
+- Admin add products
+- Responsive design
 
-## Quick Start
+## Local Development
 
 ### Frontend (React)
 ```bash
 npm install
 npm start
 ```
-[localhost:3000](http://localhost:3000)
+localhost:3000
 
-### Backend (PawsBot - Python)
+### Backend Chatbot
 ```bash
-pip install flask flask-cors pandas
-python chatbot_server.py
+pip install -r requirements.txt
+python chatbot_server.py  # localhost:5000/chat
 ```
-[localhost:5000/chat](http://localhost:5000/chat)
 
-**Both required for chatbot.**
+## Deploy to Render (Free!)
 
-## Features
-- Browse adoptable dogs
-- Shopping cart
-- Admin panel
-- **PawsBot**: AI chat - adoption info, contacts, center details (\"what is paws and homes\", costs, hours...)
+### 1. Frontend (Static Site)
+1. Build: `npm run build`
+2. Render → Static Site → GitHub repo
+3. Build: `npm install && npm run build`
+4. Publish: `build/`
 
-## Files
-- `chatbot_server.py`: Flask API + fuzzy matching
-- `pawsandhomes_clean.csv`: 50+ Q&A data
-- React app: Chatbot.jsx → floating chat UI
+### 2. Backend Chatbot (Web Service)
+1. Render → Web Service → GitHub repo
+2. Build: `pip install -r requirements.txt`
+3. Start: `gunicorn server:app`
+4. Update Chatbot.jsx: `https://your-backend.onrender.com/chat`
 
-## Test PawsBot
-1. Start both servers
-2. Chat: \"what is paws and homes\", \"adoption cost\", \"contacts\"
-3. Fuzzy works: \"how much dog\" → cost info
+**Chatbot URL:** Update `src/component/Chatbot.jsx` line 48 with Render backend URL.
 
-Clean, production-ready! 🚀
+## Cart Flow
+1. Login customer (role_id=4)
+2. Browse `/ourdogs`
+3. Add items → cart 🛒
+4. Checkout → `/makepayment`
+
+## Production URLs
+- Frontend: https://your-frontend.onrender.com
+- Chatbot API: https://your-backend.onrender.com/chat
+
+Ready! 🚀🐕
