@@ -1,0 +1,488 @@
+/* Complete Reference design CSS for modern puppy adoption site - lively green theme - FIXED */
+
+/* Page layout */
+.reference-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.05) 0%, #0f172a 50%, rgba(5, 150, 105, 0.05) 100%);
+  backdrop-filter: blur(5px);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.reference-main {
+  min-height: calc(100vh - 200px);
+}
+
+.reference-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.py-5 { padding-top: 3rem; padding-bottom: 3rem; }
+
+.d-flex { display: flex; }
+.justify-content-center { justify-content: center; }
+.justify-content-between { justify-content: space-between; }
+.align-items-start { align-items: flex-start; }
+.align-items-center { align-items: center; }
+.text-center { text-align: center; }
+.w-100 { width: 100%; }
+.mb-5 { margin-bottom: 3rem; }
+.mt-4 { margin-top: 1.5rem; }
+.mt-5 { margin-top: 3rem; }
+.mb-3 { margin-bottom: 1rem; }
+.mb-2 { margin-bottom: 0.5rem; }
+.gap-2 { gap: 0.5rem; }
+
+/* Hero Section */
+.reference-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  padding: 100px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.reference-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 20% 80%, rgba(34, 197, 94, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.reference-hero-copy {
+  z-index: 2;
+}
+
+.reference-eyebrow {
+  display: inline-block;
+  background: linear-gradient(135deg, #22c55e, #10b981);
+  color: white;
+  padding: 8px 20px;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
+}
+
+.reference-hero-title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.reference-hero-accent {
+  background: linear-gradient(135deg, #22c55e, #10b981);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.reference-hero-text {
+  font-size: 1.25rem;
+  color: #cbd5e1;
+  line-height: 1.7;
+  margin-bottom: 2.5rem;
+  max-width: 500px;
+}
+
+.reference-hero-actions {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.reference-primary-button {
+  background: linear-gradient(135deg, #22c55e, #10b981);
+  color: white;
+  border: none;
+  padding: 16px 32px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 8px 25px rgba(34, 197, 94, 0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+.reference-primary-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s;
+}
+
+.reference-primary-button:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(34, 197, 94, 0.5);
+}
+
+.reference-primary-button:hover::before {
+  left: 100%;
+}
+
+.reference-secondary-button {
+  background: transparent;
+  color: #22c55e;
+  border: 2px solid #22c55e;
+  padding: 14px 28px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.reference-secondary-button:hover {
+  background: #22c55e;
+  color: white;
+  box-shadow: 0 10px 30px rgba(34, 197, 94, 0.4);
+  transform: translateY(-2px);
+}
+
+.reference-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 30px;
+  margin-top: 4rem;
+}
+
+.reference-stat {
+  text-align: center;
+}
+
+.reference-stat h3 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #22c55e, #10b981);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 8px;
+  animation: countUp 2s ease-out;
+}
+
+.reference-stat p {
+  color: #94a3b1;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.reference-hero-visual {
+  z-index: 1;
+}
+
+.reference-hero-image-shell {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 50px 100px rgba(0,0,0,0.5);
+}
+
+.reference-hero-image {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+}
+
+.reference-quote-card {
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+  right: 30px;
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.9), rgba(5, 150, 105, 0.9));
+  color: white;
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+  backdrop-filter: blur(20px);
+}
+
+.reference-quote-card p {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+
+.reference-quote-card small {
+  opacity: 0.9;
+  font-weight: 500;
+}
+
+/* Feature Grid */
+.reference-feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+  padding: 100px 0;
+}
+
+.reference-feature-card {
+  background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 24px;
+  padding: 40px 30px;
+  text-align: center;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.reference-feature-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #22c55e, #10b981, #059669);
+}
+
+.reference-feature-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #22c55e, #10b981);
+  color: white;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  box-shadow: 0 10px 25px rgba(34, 197, 94, 0.3);
+}
+
+.reference-feature-card h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: #f8fafc;
+}
+
+.reference-feature-card p {
+  color: #cbd5e1;
+  line-height: 1.6;
+}
+
+.reference-feature-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+}
+
+/* Arrivals Section */
+.reference-arrivals {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.03) 0%, rgba(5, 150, 105, 0.03) 100%);
+  padding: 100px 0;
+}
+
+.reference-arrivals-header h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  background: linear-gradient(135deg, #22c55e, #10b981);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.reference-arrivals-header h2::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #22c55e, #10b981);
+  border-radius: 2px;
+}
+
+.reference-filter-bar {
+  flex-wrap: wrap;
+  padding: 10px 0;
+}
+
+.reference-filter-pill {
+  background: rgba(255,255,255,0.1);
+  color: #f8fafc;
+  border: 1px solid rgba(255,255,255,0.2);
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.reference-filter-pill.active,
+.reference-filter-pill:hover {
+  background: linear-gradient(135deg, #22c55e, #10b981);
+  box-shadow: 0 5px 15px rgba(34, 197, 94, 0.4);
+  transform: translateY(-2px);
+}
+
+.reference-product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin-top: 4rem;
+}
+
+.reference-product-card {
+  background: rgba(255,255,255,0.08);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px);
+}
+
+.reference-product-card:hover {
+  transform: translateY(-15px);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+}
+
+.reference-product-image-wrap {
+  height: 250px;
+  overflow: hidden;
+  position: relative;
+}
+
+.reference-product-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.reference-product-card:hover .reference-product-image {
+  transform: scale(1.1);
+}
+
+.reference-product-body {
+  padding: 1.5rem;
+}
+
+.reference-product-name {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #f8fafc;
+  margin: 0 0 0.25rem 0;
+}
+
+.reference-product-breed {
+  color: #94a3b1;
+  font-size: 0.95rem;
+  margin: 0.25rem 0 0.5rem 0;
+  font-weight: 500;
+}
+
+.text-success {
+  color: #10b981 !important;
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.reference-product-description {
+  color: #cbd5e1;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+
+.badge {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  border: 1px solid rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.1);
+  color: #f8fafc;
+}
+
+.reference-arrivals-note {
+  text-align: center;
+  color: #ef4444;
+  font-weight: 500;
+  padding: 2rem;
+}
+
+.reference-adopt-button {
+  background: linear-gradient(135deg, #22c55e, #10b981);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3);
+  width: 100%;
+}
+
+.reference-adopt-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(34, 197, 94, 0.4);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .reference-hero {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 60px 0;
+  }
+  .reference-hero-actions {
+    flex-direction: column;
+  }
+  .reference-stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  .reference-product-grid {
+    grid-template-columns: 1fr;
+  }
+  .reference-feature-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .reference-container {
+    padding: 0 15px;
+  }
+  .reference-stats {
+    grid-template-columns: 1fr;
+  }
+  .reference-filter-bar {
+    flex-direction: column;
+    gap: 10px;
+  }
+}

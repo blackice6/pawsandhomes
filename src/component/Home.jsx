@@ -1,25 +1,24 @@
 // Import React library with hooks: useEffect (data fetching), useState (local state).
-import React, { useEffect, useState } from "react";
+
 // Import axios - HTTP client for API calls (stats/trust data if dynamic).
-import axios from "axios";
+
+// Import React hooks for component state.
+import { useState } from "react";
 // Import useNavigate - programmatic routing to ourdogs/addproducts.
 import { useNavigate } from "react-router-dom";
 // Import CapybaraLoader - animated loading spinner.
 import CapybaraLoader from "./CapybaraLoader";
-// Import home page styles.
-import "../css/Getproducts.css";
-import heroImage from "../images/hero-dog.jpg";
-import fallbackDogImage from "../images/dogs.jpg";
 
-// Constants for static content - no API needed.
-const IMG_BASE_URL = "https://blackice6.alwaysdata.net/static/images/";
-const FALLBACK_PRODUCT_IMAGE = fallbackDogImage;
+import "../css/Home.css";
+import heroImage from "../images/hero-dog.jpg";
+
 
 // Hero stats array - displayed as animated counters.
 const HERO_STATS = [
-  { value: "5k+", label: "Puppies Rehomed" },
-  { value: "150+", label: "Verified Breeders" },
-  { value: "4.9/5", label: "Trust Score" },
+  { value: "5,000+", label: "Puppies Rehomed" },
+  { value: "50-100", label: "Dogs Available" },
+  { value: "98%", label: "Success Rate" },
+  { value: "+254 729 932 162", label: "Contact" }
 ];
 
 // Trust features grid - 3 key selling points.
@@ -49,44 +48,32 @@ const BREED_LABELS = ["German Shepherd", "Boerboel", "Golden Retriever", "Rotwei
 
 // Home component - landing page with hero/marketing, no products list (redirects to /ourdogs).
 const Home = () => {
-  // dogs state - fetched for hero "new arrivals" teasers (4 featured).
-  const [dogs, setDogs] = useState([]);
   // activeFilter state - price filter demo.
   const [activeFilter, setActiveFilter] = useState("All");
-  // loading state - during API fetch.
-  const [loading, setLoading] = useState(false);
-  // error state - API failures.
-  const [error, setError] = useState(""); // Non-critical error for hero teasers.
+  const loading = false;
+  const error = "";
+
   // navigate instance - routing.
   const navigate = useNavigate();
 
-  // useEffect - fetch featured dogs for hero teasers.
-  useEffect(() => {
-    const fetchDogs = async () => {
-      try {
-        setLoading(true);
-        // Public API for products.
-        const response = await axios.get("https://blackice6.alwaysdata.net/api/get_products");
-        // Ensure array, slice first 4 for hero.
-        setDogs(Array.isArray(response.data) ? response.data.slice(0, 4) : []);
-      } catch (err) {
-        // Non-critical - hero works without.
-        setError("Unable to load featured puppies.");
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchDogs();
-  }, []);
+  const dogs = [
+    {product_id:1, product_name:"Duke German Shepherd", product_description:"6-month-old German Shepherd, fully vaccinated, playful and loyal.", product_cost:25000, product_photo:"/dog1.jpg"},
+    {product_id:2, product_name:"Bella Labrador", product_description:"Friendly 8-month Labrador Retriever. Great with kids.", product_cost:20000, product_photo:"/dog2.jpg"},
+    {product_id:3, product_name:"Max Bulldog", product_description:"2-year-old Bulldog mix, calm temperament.", product_cost:15000, product_photo:"/dog3.jpg"},
+    {product_id:4, product_name:"Luna Beagle", product_description:"Energetic Beagle puppy, 4 months, loves walks.", product_cost:18000, product_photo:"/dog4.jpg"},
+    {product_id:8, product_name:"Charlie Golden Retriever", product_description:"Golden Retriever puppy, family friendly.", product_cost:30000, product_photo:"/dog1.jpg"}
+  ];
+
 
   // Filter logic for hero teasers (KES price-based).
   const filteredDogs = dogs.filter((dog) => {
     const price = Number(dog.product_cost || 0);
     if (activeFilter === "All") return true;
-    if (activeFilter === "Budget") return price < 15000;
-    if (activeFilter === "Standard") return price >= 15000 && price < 35000;
-    return price >= 35000;
+    if (activeFilter === "Budget") return price < 20000;
+    if (activeFilter === "Standard") return price >= 20000 && price < 30000;
+    return price >= 30000;
   });
+
 
   // Location labels for teasers.
   const getDogLocationLabel = (index) => {
@@ -210,10 +197,11 @@ const Home = () => {
                     {/* Image wrapper. */}
                     <div className="reference-product-image-wrap">
                       <img 
-                        src={dog.product_photo ? `${IMG_BASE_URL}${dog.product_photo}` : FALLBACK_PRODUCT_IMAGE} 
+                        src={dog.product_photo} 
                         className="reference-product-image" 
                         alt={dog.product_name} 
                       />
+
                     </div>
                     {/* Card body. */}
                     <div className="reference-product-body p-3">

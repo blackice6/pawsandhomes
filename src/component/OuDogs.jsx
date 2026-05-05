@@ -45,26 +45,41 @@ const { addToCart } = useCart();
   // Image base URL.
   const img_url = "https://blackice6.alwaysdata.net/static/images/";
 
-  // Fetch all products.
-  const fetchProducts = async () => {
-    try {
-      setLoading(true);
-      setError("");
-
-      const response = await axios.get("https://blackice6.alwaysdata.net/api/get_products");
-
-      setProducts(response.data);
-      setFilteredProducts(response.data);
-    } catch (err) {
-      setError(err.response?.data?.message || err.message || "Unable to fetch products.");
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  // Load on mount.
+  // Load products on mount.
   useEffect(() => {
-    fetchProducts();
+    const mockProducts = [
+      {product_id:1, product_name:"Duke German Shepherd", product_description:"6-month-old German Shepherd, fully vaccinated, playful and loyal. Ready for active family. Includes microchip and starter kit.", product_cost:25000, product_photo:"dogs.jpg"},
+      {product_id:2, product_name:"Bella Labrador", product_description:"Friendly 8-month Labrador Retriever. Great with kids, trained basics. KES 20k adoption fee.", product_cost:20000, product_photo:"dogs.jpg"},
+      {product_id:3, product_name:"Max Bulldog", product_description:"2-year-old Bulldog mix, calm temperament, perfect apartment dog. All shots up to date.", product_cost:15000, product_photo:"dogs.jpg"},
+      {product_id:4, product_name:"Luna Beagle", product_description:"Energetic Beagle puppy, 4 months, loves walks and adventures. Vet checked.", product_cost:18000, product_photo:"dogs.jpg"},
+      {product_id:5, product_name:"Rocky Mixed Breed", product_description:"Rescue mixed breed, 1 year, super loving and adaptable. Low adoption fee.", product_cost:10000, product_photo:"dogs.jpg"},
+      {product_id:6, product_name:"Sophie Poodle", product_description:"Toy Poodle female, groomed, hypoallergenic. Great companion.", product_cost:35000, product_photo:"dogs.jpg"},
+      {product_id:7, product_name:"Buddy Husky", product_description:"Siberian Husky, energetic, needs space to run. Vaccinated and energetic.", product_cost:40000, product_photo:"dogs.jpg"},
+      {product_id:8, product_name:"Charlie Golden Retriever", product_description:"Golden Retriever puppy, family friendly, golden heart.", product_cost:30000, product_photo:"hero-dog.jpg"},
+      {product_id:9, product_name:"Zoe Boerboel", product_description:"Strong Boerboel, guard dog potential, trained.", product_cost:45000, product_photo:"ourdogs.jpg"},
+      {product_id:10, product_name:"Jack Rottweiler", product_description:"Rottweiler mix, loyal protector, good with family.", product_cost:28000, product_photo:"dogs.jpg"}
+    ];
+
+    const loadProducts = async () => {
+      try {
+        setLoading(true);
+        setError("");
+
+        const response = await axios.get("https://blackice6.alwaysdata.net/api/get_products");
+        const apiData = Array.isArray(response.data) ? response.data : [];
+        setProducts(apiData.length > 0 ? apiData : mockProducts);
+        setFilteredProducts(apiData.length > 0 ? apiData : mockProducts);
+      } catch (err) {
+        console.log("Using mock data:", err);
+        setProducts(mockProducts);
+        setFilteredProducts(mockProducts);
+        setError("Using demo data.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadProducts();
   }, []);
 
   // Filter logic (search only, no category as backend lacks field).

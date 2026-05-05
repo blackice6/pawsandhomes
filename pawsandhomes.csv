@@ -1,0 +1,11 @@
+product_id,product_name,product_description,product_cost,product_photo,category
+1,"Duke German Shepherd","6-month-old German Shepherd, fully vaccinated, playful and loyal. Ready for active family. Includes microchip and starter kit.",25000,dogs.jpg,German Shepherd
+2,"Bella Labrador","Friendly 8-month Labrador Retriever. Great with kids, trained basics. KES 20k adoption fee.",20000,dogs.jpg,Labrador
+3,"Max Bulldog","2-year-old Bulldog mix, calm temperament, perfect apartment dog. All shots up to date.",15000,dogs.jpg,Bulldog
+4,"Luna Beagle","Energetic Beagle puppy, 4 months, loves walks and adventures. Vet checked.",18000,dogs.jpg,Beagle
+5,"Rocky Mixed Breed","Rescue mixed breed, 1 year, super loving and adaptable. Low adoption fee.",10000,dogs.jpg,Mixed
+6,"Sophie Poodle","Toy Poodle female, groomed, hypoallergenic. Great companion.",35000,dogs.jpg,Poodle
+7,"Buddy Husky","Siberian Husky, energetic, needs space to run. Vaccinated and energetic.",40000,dogs.jpg,Husky
+8,"Charlie Golden Retriever","Golden Retriever puppy, family friendly, golden heart.",30000,hero-dog.jpg,Golden Retriever
+9,"Zoe Boerboel","Strong Boerboel, guard dog potential, trained.",45000,ourdogs.jpg,Boerboel
+10,"Jack Rottweiler","Rottweiler mix, loyal protector, good with family.",28000,dogs.jpg,Rottweiler

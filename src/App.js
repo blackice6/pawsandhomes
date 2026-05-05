@@ -19,14 +19,16 @@ import Footer from './component/Footer';
 import { CartProvider } from './context/CartContext';
 
 import Cart from './component/Cart';
+import PawsBot from "./component/PawsBot";
 
 function App() {
   const [isCartOpen, setIsCartOpen] = useState(false);
-  
+  const [csv, setCsv] = useState("");
+
   useEffect(() => {
-    const handleOpenCart = () => setIsCartOpen(true);
-    window.addEventListener('openCart', handleOpenCart);
-    return () => window.removeEventListener('openCart', handleOpenCart);
+    fetch("/pawsbot_responses.csv")
+      .then(r => r.text())
+      .then(setCsv);
   }, []);
 
   return (
@@ -56,6 +58,7 @@ function App() {
           <Cart isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
         </div>
       </Router>
+      <PawsBot csvText={csv} floating={true} />
     </CartProvider>
   );
 }

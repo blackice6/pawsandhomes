@@ -2,15 +2,18 @@ import React, { useState } from "react";
 import "../css/Category.css";
 
 const Categories = ({ onCategorySelect }) => {
-  const categories = [
+const categories = [
     "All",
-    "Golden Retriever",
     "German Shepherd",
     "Labrador",
     "Bulldog",
     "Beagle",
+    "Golden Retriever",
     "Poodle",
-    "Husky"
+    "Husky",
+    "Mixed",
+    "Boerboel",
+    "Rottweiler"
   ];
 
   const [activeCategory, setActiveCategory] = useState("All");
