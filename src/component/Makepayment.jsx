@@ -4,9 +4,15 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import CapybaraLoader from './CapybaraLoader';
 
 const Makepayment = () => {
-  const { product } = useLocation().state || {};
+const location = useLocation();
+const state = location.state || {};
+const { cart, product } = state;
   const navigate = useNavigate();
   const img_url = "https://blackice6.alwaysdata.net/static/images/";
+  const total = cart ? cart.reduce((sum, item) => sum + parseFloat(item.product_cost) * item.quantity, 0) : parseFloat(product ? product.product_cost : 0);
+  const isCart = cart && cart.length > 0;
+  const checkoutTitle = isCart ? 'Cart Checkout' : (product ? product.product_name : 'Checkout');
+  const checkoutDesc = isCart ? 'Total for cart items' : (product ? product.product_description : 'Complete your payment');
 
   const [number, setNumber] = useState("");
   const [loading, setLoading] = useState(false);
@@ -22,7 +28,7 @@ const Makepayment = () => {
     try {
       const formdata = new FormData();
       formdata.append("phone", number);
-      formdata.append("amount", product.product_cost);
+formdata.append("amount", total.toFixed(0));
 
       const response = await axios.post(
         "https://blackice6.alwaysdata.net/api/mpesa_payment",
@@ -45,7 +51,7 @@ const Makepayment = () => {
       <div className="row justify-content-center">
         <div className="col-md-8">
           <div className="d-flex justify-content-between align-items-center mb-4">
-<h1 className="text-primary">🐕 Adopt via M-PESA</h1>
+<h1 className="text-primary">🐕 {checkoutTitle} via M-PESA</h1>
             <button 
               className="btn btn-outline-light" 
               onClick={() => navigate("/")}
@@ -55,16 +61,23 @@ const Makepayment = () => {
           </div>
 
           <div className="card shadow-lg" style={{ backgroundColor: '#1e1e1e' }}>
-            <img 
-              src={img_url + product.product_photo} 
-              alt={product.product_name} 
-              className="card-img-top" 
-              style={{ objectFit: 'cover', maxHeight: '300px' }}
-            />
+            {product && !isCart && (
+              <img 
+                src={img_url + product.product_photo} 
+                alt={product.product_name} 
+                className="card-img-top" 
+                style={{ objectFit: 'cover', maxHeight: '300px' }}
+              />
+            )}
+            {isCart && (
+              <div className="p-3 text-center">
+                <span className="fs-1">🛒</span>
+              </div>
+            )}
             <div className="card-body">
-              <h2 className="text-info">{product.product_name}</h2>
-              <p className="text-light">{product.product_description}</p>
-              <h3 className="text-warning mb-4">KES {product.product_cost}</h3>
+              <h2 className="text-info">{checkoutTitle}</h2>
+              <p className="text-light">{checkoutDesc}</p>
+              <h3 className="text-warning mb-4">KES {total.toLocaleString()}</h3>
 
               <form onSubmit={handlesubmit}>
 {loading && <CapybaraLoader />}

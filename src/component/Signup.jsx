@@ -17,7 +17,6 @@ const Signup = () => {
   const [password, setPassword] = useState("");
   // useState hook for phone input - telephone number field.
   const [phone, setPhone] = useState("");
-
   // useState hook for password confirmation - validates password match client-side.
   const [confirmPassword, setConfirmPassword] = useState("");
 
@@ -152,6 +151,8 @@ const Signup = () => {
           <span>Email</span>
         </label>
 
+
+
         {/* Password input. */}
         <label>
           <input
@@ -194,3 +195,4 @@ const Signup = () => {
 
 // Export component for routing in App.js.
 export default Signup;
+

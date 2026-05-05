@@ -7,13 +7,14 @@ import CapybaraLoader from "./CapybaraLoader";
 // Import hooks - navigation.
 import { useNavigate } from "react-router-dom";
 // Import Category - filter buttons.
-import Categories from "./Category";
+// import Categories from "./Category"; // Unused
 // Import "../css/Getproduct.css" - products grid styling.
 import "../css/Getproduct.css";
 // Import FaSearch icon.
 import { FaSearch } from "react-icons/fa";
 // Import role util.
 import { getUserRoleId } from "../utils/roleUtils.js";
+import { useCart } from "../context/CartContext";
 import fallbackDogImage from "../images/dogs.jpg";
 
 // OuDogs component - full products listing (from home teasers).
@@ -29,8 +30,6 @@ const OuDogs = () => {
 
   // Search query.
   const [searchTerm, setSearchTerm] = useState("");
-  // Active category.
-  const [selectedCategory, setSelectedCategory] = useState("All");
   // Search suggestions visibility.
   const [showSuggestions, setShowSuggestions] = useState(false);
 
@@ -40,7 +39,8 @@ const OuDogs = () => {
   const searchRef = useRef(null);
   // Current user/role.
   const user = JSON.parse(localStorage.getItem("user"));
-  const userRoleId = user ? getUserRoleId(user) : null;
+const userRoleId = user ? getUserRoleId(user) : null;
+const { addToCart } = useCart();
 
   // Image base URL.
   const img_url = "https://blackice6.alwaysdata.net/static/images/";
@@ -67,17 +67,9 @@ const OuDogs = () => {
     fetchProducts();
   }, []);
 
-  // Filter logic.
+  // Filter logic (search only, no category as backend lacks field).
   useEffect(() => {
     let filtered = [...products];
-
-    if (selectedCategory !== "All") {
-      filtered = filtered.filter(
-        (product) =>
-          product.category &&
-          product.category.toLowerCase() === selectedCategory.toLowerCase()
-      );
-    }
 
     if (searchTerm.trim() !== "") {
       filtered = filtered.filter((product) =>
@@ -89,7 +81,7 @@ const OuDogs = () => {
     }
 
     setFilteredProducts(filtered);
-  }, [products, searchTerm, selectedCategory]);
+  }, [products, searchTerm]);
 
   // Search form.
   const handleSearch = (e) => {
@@ -100,7 +92,6 @@ const OuDogs = () => {
   // Clear filters.
   const handleClearSearch = () => {
     setSearchTerm("");
-    setSelectedCategory("All");
     setFilteredProducts(products);
     setShowSuggestions(false);
   };
@@ -153,7 +144,7 @@ const OuDogs = () => {
           </div>
         </section>
 
-        <Categories onCategorySelect={setSelectedCategory} />
+        {/* Categories disabled as backend product_details lacks category field */}
 
         <section className="dogs-listing-panel">
           <div className="dogs-listing-header">
@@ -249,13 +240,21 @@ const OuDogs = () => {
                   KES {product.product_cost}
                 </strong>
 
-                {user && userRoleId === 4 ? (
-                  <button
-                    className="btn dog-action-btn"
-                    onClick={() => navigate("/makepayment", { state: { product } })}
-                  >
-                    Purchase Now
-                  </button>
+{user && userRoleId === 4 ? (
+<div className="d-flex gap-2 w-100">
+                    <button
+                      className="btn btn-success flex-fill"
+                      onClick={() => addToCart(product)}
+                    >
+                      Add to Cart
+                    </button>
+                    <button
+                      className="btn btn-success flex-fill"
+                      onClick={() => navigate("/makepayment", { state: { product } })}
+                    >
+                      Purchase
+                    </button>
+                  </div>
                 ) : (
                   <button
                     className="btn dog-action-btn dog-action-btn-muted"

@@ -10,6 +10,8 @@ import logoImage from "../images/logo.jpg";
 import { FaUserCircle } from "react-icons/fa";
 // Import utility functions from roleUtils - determines user role from localStorage for conditional UI.
 import { getUserRoleId, getRoleNameById } from "../utils/roleUtils.js";
+// Import useCart from CartContext - gets cartItems for badge display.
+import { useCart } from "../context/CartContext";
 
 // Define Navbar functional component - renders top navigation bar with auth/roles.
 const Navbar = () => {
@@ -22,6 +24,10 @@ const Navbar = () => {
   const userRoleId = getUserRoleId(user);
   // getRoleNameById utility - converts role ID to readable name (Customer/Admin).
   const roleName = userRoleId ? getRoleNameById(userRoleId) : "Customer";
+  // Get cartItems from context - used for cart badge count.
+  const { cartItems } = useCart();
+  // isCustomer boolean - true if userRoleId === 4 (customer only cart access).
+  const isCustomer = userRoleId === 4;
 
   // handleLogout function - clears auth and redirects to signin.
   const handleLogout = () => {
@@ -75,7 +81,22 @@ const Navbar = () => {
         ]),
 
         // Right auth/user section - flex aligned.
-        React.createElement('div', { className: "d-flex align-items-center" }, [
+        React.createElement('div', { className: "d-flex align-items-center gap-2" }, [
+          // Cart button - only for customer role.
+          isCustomer && React.createElement('button', { 
+            className: "cart-nav-btn position-relative me-3",
+            onClick: () => window.dispatchEvent(new CustomEvent('openCart')),
+            style: { cursor: 'pointer', border: 'none', background: 'none' }
+          }, [
+            // Cart emoji icon.
+            React.createElement('span', { style: { fontSize: '24px' } }, '🛒'),
+            // Cart badge - shows item count if >0.
+            cartItems.length > 0 && React.createElement('span', {
+              className: "position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger",
+              style: { fontSize: '12px' }
+            }, cartItems.length.toString())
+          ]),
+
           // Show user panel if logged in.
           user ? React.createElement('div', { className: "d-flex align-items-center" }, [
             // User avatar section.
@@ -170,3 +191,4 @@ const Navbar = () => {
 
 // Export Navbar for use in other components/pages.
 export default Navbar;
+

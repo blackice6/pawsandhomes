@@ -159,7 +159,7 @@ const Home = () => {
                 <img src={heroImage} alt="Puppy" className="reference-hero-image" />
                 {/* Testimonial quote card. */}
                 <div className="reference-quote-card">
-                  <p>"Found our perfect GSD!"</p>
+                  <p>"Found our perfect puppy"</p>
                   <small>The Kamau Family, Nairobi</small>
                 </div>
               </div>

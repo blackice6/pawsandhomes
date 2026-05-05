@@ -15,12 +15,16 @@ import About from './component/Aboutus';
 import Contact from './component/Contact';
 import AdminRoute from './component/AdminRoute';
 import Footer from './component/Footer';
+import { CartProvider } from './context/CartContext';
+import Chatbot from './component/Chatbot';
+// import CartIcon from './component/CartIcon'; // Moved to Navbar
 
 function App() {
   return (
-    <Router>
-      <div className="App">
-        <Navbar />
+    <CartProvider>
+      <Router>
+        <div className="App">
+          <Navbar />
 
 <Routes>
         <Route path='/' element={<Home />} />
@@ -40,10 +44,11 @@ function App() {
         <Route path='*' element={<Notfound />} />
       </Routes>
 
+          <Chatbot />
       <Footer/>
     </div>
-  
-    </Router>
+      </Router>
+    </CartProvider>
   );
 }
 
