@@ -1,6 +1,7 @@
 import './App.css';
-import "./index.css"; // make sure this imports the CSS above
+import "./index.css";
 
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Signin from './component/Signin';
@@ -17,39 +18,47 @@ import AdminRoute from './component/AdminRoute';
 import Footer from './component/Footer';
 import { CartProvider } from './context/CartContext';
 import Chatbot from './component/Chatbot';
-// import CartIcon from './component/CartIcon'; // Moved to Navbar
+import Cart from './component/Cart';
 
 function App() {
+  const [isCartOpen, setIsCartOpen] = useState(false);
+  
+  useEffect(() => {
+    const handleOpenCart = () => setIsCartOpen(true);
+    window.addEventListener('openCart', handleOpenCart);
+    return () => window.removeEventListener('openCart', handleOpenCart);
+  }, []);
+
   return (
     <CartProvider>
       <Router>
         <div className="App">
           <Navbar />
-
-<Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/ourdogs' element={<OuDogs />} />
-        <Route
-          path='/addproducts'
-          element={<AdminRoute allowedRoles={["administrator", "distributer"]}><Addproducts /></AdminRoute>}
-        />
-        <Route path='/signup' element={<Signup />} />
-        <Route path='/signin' element={<Signin />} />
-        <Route
-          path='/makepayment'
-          element={<Makepayment />}
-        />
-        <Route path='/about' element={<About />} />
-        <Route path='/contact' element={<Contact />} />
-        <Route path='*' element={<Notfound />} />
-      </Routes>
-
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/ourdogs' element={<OuDogs />} />
+            <Route
+              path='/addproducts'
+              element={<AdminRoute allowedRoles={["administrator", "distributer"]}><Addproducts /></AdminRoute>}
+            />
+            <Route path='/signup' element={<Signup />} />
+            <Route path='/signin' element={<Signin />} />
+            <Route
+              path='/makepayment'
+              element={<Makepayment />}
+            />
+            <Route path='/about' element={<About />} />
+            <Route path='/contact' element={<Contact />} />
+            <Route path='*' element={<Notfound />} />
+          </Routes>
           <Chatbot />
-      <Footer/>
-    </div>
+          <Footer />
+          <Cart isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
+        </div>
       </Router>
     </CartProvider>
   );
 }
 
 export default App;
+

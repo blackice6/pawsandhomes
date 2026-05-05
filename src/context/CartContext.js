@@ -105,7 +105,7 @@ export const CartProvider = ({ children }) => {
       // Clear function.
       clearCart
     }}>
-      {children} // Wrap children components.
+      {children} {/* Wrap children components. */}
     </CartContext.Provider>
   );
 };

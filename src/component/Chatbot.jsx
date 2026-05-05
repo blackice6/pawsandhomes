@@ -56,7 +56,7 @@ const Chatbot = () => {
       setMessages(prev => [...prev, { sender: 'bot', text: data.response }]);
     } catch (error) {
       // Error handling - server down message.
-      setMessages(prev => [...prev, { sender: 'bot', text: "PawsBot: Sorry, server is down. Check if chatbot_server.py is running." }]);
+      setMessages(prev => [...prev, { sender: 'bot', text: "PawsBot: Sorry, the chatbot server is not running. Please start it with: python chatbot_server.py" }]);
     } finally {
       // Always stop loading.
       setLoading(false);
@@ -71,35 +71,40 @@ const Chatbot = () => {
 
   // Render chatbot UI.
   return (
-    <div className="chatbot-container"> // Fixed position container bottom-right.
-      <button className="chatbot-toggle" onClick={() => setIsOpen(!isOpen)}> // Toggle button emoji.
-        <span>💬</span> // Chat emoji.
+    <div className="chatbot-container">
+      {/* Toggle button emoji */}
+      <button className="chatbot-toggle" onClick={() => setIsOpen(!isOpen)}>
+        <span>💬</span>
       </button>
-      {isOpen && ( // Show window if open.
-        <div className="chatbot-window"> // Main chat window.
-          <div className="chatbot-header"> // Header with title/close.
-            <span>PawsBot</span> // Bot name.
-            <button onClick={() => setIsOpen(false)}>×</button> // Close button.
+      {isOpen && (
+        <div className="chatbot-window">
+          {/* Header with title/close */}
+          <div className="chatbot-header">
+            <span>PawsBot</span>
+            {/* Close button */}
+            <button onClick={() => setIsOpen(false)}>×</button>
           </div>
-          <div className="chatbot-messages"> // Scrollable messages container.
-            {messages.map((msg, index) => ( // Map messages to UI.
-              <div key={index} className={`message ${msg.sender}`}> // Message div with sender class.
-                <span>{msg.text}</span> // Message text.
+          {/* Scrollable messages container */}
+          <div className="chatbot-messages">
+            {messages.map((msg, index) => (
+              <div key={index} className={`message ${msg.sender}`}>
+                <span>{msg.text}</span>
               </div>
             ))}
-            {loading && <div className="message bot"><span>Typing...</span></div>} // Loading indicator.
-            <div ref={messagesEndRef} /> // Scroll anchor.
+            {loading && <div className="message bot"><span>Typing...</span></div>}
+            <div ref={messagesEndRef} />
           </div>
-          <div className="chatbot-input"> // Input area.
-            <input // User input field.
+          {/* Input area */}
+          <div className="chatbot-input">
+            <input
               type="text"
               value={input}
-              onChange={(e) => setInput(e.target.value)} // Update input state.
-              onKeyPress={handleKeyPress} // Enter to send.
+              onChange={(e) => setInput(e.target.value)}
+              onKeyPress={handleKeyPress}
               placeholder="Ask about adoption, costs, contacts..."
-              disabled={loading} // Disable during send.
+              disabled={loading}
             />
-            <button onClick={sendMessage} disabled={loading || !input.trim()}> // Send button.
+            <button onClick={sendMessage} disabled={loading || !input.trim()}>
               Send
             </button>
           </div>
