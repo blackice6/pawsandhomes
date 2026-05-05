@@ -68,3 +68,57 @@ Glow overlay
   from { transform: translateY(0) translateX(0); }
   to { transform: translateY(-200px) translateX(-100px); }
 }
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+  
+  .stars, .stars2 {
+    display: none; /* Hide stars on mobile for better performance */
+  }
+  
+  .glow {
+    display: none; /* Hide glow overlay on mobile */
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 13px;
+  }
+}
+
+/* Footer responsive styles */
+@media (max-width: 768px) {
+  footer .col-lg-3 {
+    border-right: none !important;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    margin-bottom: 20px;
+  }
+  
+  footer .col-lg-3:last-child {
+    border-bottom: none;
+  }
+}
+
+@media (max-width: 576px) {
+  footer .p-4 {
+    padding: 20px 15px !important;
+  }
+  
+  footer img[alt="Paws & Homes logo"] {
+    width: 50px !important;
+    height: 50px !important;
+  }
+  
+  footer h5 {
+    font-size: 1.1rem !important;
+    margin-bottom: 15px !important;
+  }
+  
+  footer p {
+    font-size: 12px !important;
+  }
+}

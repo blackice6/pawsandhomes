@@ -538,4 +538,50 @@ form .btn-secondary:hover {
   .dogs-hero-stats {
     grid-template-columns: 1fr;
   }
+  
+  .dog-card {
+    margin-bottom: 20px;
+  }
+  
+  .dog-card-body {
+    padding: 16px;
+  }
+  
+  .dog-card-image-wrap {
+    height: 200px;
+  }
+  
+  .dog-card h3 {
+    font-size: 1.1rem;
+  }
+  
+  .dog-price {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .dogs-main {
+    padding: 20px 10px 40px;
+  }
+  
+  .dogs-hero {
+    padding: 20px;
+  }
+  
+  .dogs-hero h1 {
+    font-size: clamp(2rem, 6vw, 3rem);
+  }
+  
+  .dogs-listing-panel {
+    padding: 20px;
+  }
+  
+  .dog-card-body {
+    padding: 14px;
+  }
+  
+  .dog-card-image-wrap {
+    height: 180px;
+  }
 }

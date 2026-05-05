@@ -192,10 +192,96 @@
   color: white;
 }
 
-.navbar-search-wrapper {
-  position: relative;
-  width: 100%;
-  max-width: 500px;
+/* Responsive styles for mobile */
+@media (max-width: 991px) {
+  .header-modern {
+    padding: 8px 0;
+  }
+  
+  .navbar-toggler {
+    border: none;
+    background: rgba(34, 197, 94, 0.1);
+    color: #22c55e;
+  }
+  
+  .navbar-toggler:focus {
+    box-shadow: 0 0 0 0.2rem rgba(34, 197, 94, 0.25);
+  }
+  
+  .navbar-collapse {
+    background: rgba(34, 197, 94, 0.05);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    margin-top: 10px;
+    padding: 10px;
+  }
+  
+  .navbar-nav .nav-link {
+    padding: 10px 15px;
+    border-radius: 8px;
+    margin: 2px 0;
+    transition: all 0.3s ease;
+  }
+  
+  .navbar-nav .nav-link:hover {
+    background: rgba(34, 197, 94, 0.1);
+  }
+  
+  .cart-nav-btn {
+    margin-right: 10px !important;
+  }
+  
+  .username-label {
+    font-size: 14px;
+  }
+  
+  .role-label {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 576px) {
+  .d-flex.align-items-center.gap-2 {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .cart-nav-btn {
+    order: -1;
+    margin-right: 5px !important;
+  }
+  
+  /* Leverage global btn but override if needed */
+  .btn-modern-outline,
+  .btn-modern {
+    padding: 0.875rem 1.25rem;
+    font-size: clamp(0.85rem, 4vw, 0.95rem);
+    min-height: 44px;
+  }
+  
+  .navbar-brand img {
+    width: 35px;
+    height: 35px;
+  }
+  
+  .text-neon {
+    font-size: clamp(1rem, 5vw, 1.2rem);
+  }
+
+  /* Search bar full width */
+  .navbar-search {
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+  }
+
+  .search-input-wrapper {
+    width: 100%;
+  }
+
+  .search-input {
+    font-size: clamp(0.9rem, 4vw, 1rem);
+  }
 }
 
 .navbar-search {

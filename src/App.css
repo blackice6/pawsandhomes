@@ -1,6 +1,79 @@
-/* Minimal App.css - shared product image fallback sizing. */
-.product_img {
-  height: 190px;
-  object-fit: contain;
+/* Global Responsive Utils - Mobile First */
+
+/* Touch-friendly base */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Responsive typography */
+h1 { font-size: clamp(1.8rem, 5vw, 3rem); line-height: 1.2; }
+h2 { font-size: clamp(1.4rem, 4vw, 2.2rem); line-height: 1.3; }
+h3 { font-size: clamp(1.2rem, 3vw, 1.6rem); line-height: 1.4; }
+
+/* Container fluid for full-width */
+.container-fluid {
+  padding: 1rem;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+@media (min-width: 576px) { .container-fluid { padding: 1.5rem; } }
+@media (min-width: 768px) { .container-fluid { padding: 2rem; } }
+@media (min-width: 1200px) { .container-fluid { padding: 2.5rem; max-width: 1200px; } }
+
+/* Buttons touch targets */
+.btn {
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+  touch-action: manipulation;
+}
+
+@media (max-width: 480px) {
+  .btn { 
+    padding: 0.875rem 1.25rem; 
+    font-size: clamp(0.9rem, 4vw, 1rem);
+  }
+}
+
+/* Responsive images */
+.product_img,
+img.responsive-img {
   width: 100%;
+  height: auto;
+  max-height: 250px;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Flex utilities */
+.d-flex { display: flex; }
+.flex-column-xs { 
+  flex-direction: column; 
+}
+@media (min-width: 576px) { 
+  .flex-column-xs { flex-direction: row; } 
+}
+
+/* Hide horizontal scroll */
+html, body {
+  overflow-x: hidden;
+}
+
+/* Legacy product_img override - now responsive */
+.product_img {
+  height: auto;
+  aspect-ratio: 16/13;
+  object-fit: cover;
 }

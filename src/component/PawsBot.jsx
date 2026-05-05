@@ -187,6 +187,26 @@ const css = `
 @media (max-width: 440px) {
   .pb-window { width: calc(100vw - 16px); right: 8px; bottom: 86px; }
   .pb-fab { bottom: 18px; right: 18px; }
+  
+  .pb-msgs {
+    min-height: 200px;
+    max-height: 280px;
+  }
+  
+  .pb-bubble {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+  
+  .pb-input {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+  
+  .pb-chip {
+    font-size: 10px;
+    padding: 3px 8px;
+  }
 }
 `;
 
