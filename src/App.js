@@ -31,6 +31,17 @@ function App() {
       .then(setCsv);
   }, []);
 
+  // Listen for cart open event from Navbar
+  useEffect(() => {
+    const handleOpenCart = () => {
+      setIsCartOpen(true);
+    };
+    window.addEventListener('openCart', handleOpenCart);
+    return () => {
+      window.removeEventListener('openCart', handleOpenCart);
+    };
+  }, []);
+
   return (
     <CartProvider>
       <Router>
