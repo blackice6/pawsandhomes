@@ -77,3 +77,7 @@ html, body {
   aspect-ratio: 16/13;
   object-fit: cover;
 }
+
+.floating-cart-btn:hover {
+  transform: scale(1.1);
+}

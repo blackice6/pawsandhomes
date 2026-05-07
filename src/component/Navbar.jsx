@@ -10,8 +10,6 @@ import logoImage from "../images/logo.jpg";
 import { FaUserCircle } from "react-icons/fa";
 // Import utility functions from roleUtils - determines user role from localStorage for conditional UI.
 import { getUserRoleId, getRoleNameById } from "../utils/roleUtils.js";
-// Import useCart from CartContext - gets cartItems for badge display.
-import { useCart } from "../context/CartContext";
 
 // Define Navbar functional component - renders top navigation bar with auth/roles.
 const Navbar = () => {
@@ -24,8 +22,6 @@ const Navbar = () => {
   const userRoleId = getUserRoleId(user);
   // getRoleNameById utility - converts role ID to readable name (Customer/Admin).
   const roleName = userRoleId ? getRoleNameById(userRoleId) : "Customer";
-  // Get cartItems from context - used for cart badge count.
-  const { cartItems } = useCart();
   // isCustomer boolean - true if userRoleId === 4 (customer only cart access).
   const isCustomer = userRoleId === 4;
 
@@ -49,10 +45,10 @@ const Navbar = () => {
     React.createElement('div', { className: "container-fluid" }, [
       // Flex layout for logo + nav + auth buttons + mobile toggle.
       React.createElement('div', { className: "d-flex justify-content-between align-items-center py-3" }, [
-        // Brand/logo link - home route.
+        // Left side: brand
         React.createElement(Link, { className: "navbar-brand d-flex align-items-center text-decoration-none", to: "/" }, [
           // Logo image with rounded glow effect.
-          React.createElement('img', { src: logoImage, width: "40", height: "40", alt: "logo", className: "me-2 rounded-circle glow-effect" }),
+            React.createElement('img', { src: logoImage, width: "30", height: "30", alt: "logo", className: "me-2 rounded-circle glow-effect" }),
           // Brand text with neon gradient.
           React.createElement('span', { className: "fw-bold text-neon" }, "Paws & Homes")
         ]),
@@ -82,21 +78,6 @@ const Navbar = () => {
 
         // Right auth/user section - flex aligned.
         React.createElement('div', { className: "d-flex align-items-center gap-2" }, [
-          // Cart button - only for customer role.
-          isCustomer && React.createElement('button', { 
-            className: "cart-nav-btn position-relative me-3",
-            onClick: () => window.dispatchEvent(new CustomEvent('openCart')),
-            style: { cursor: 'pointer', border: 'none', background: 'none' }
-          }, [
-            // Cart emoji icon.
-            React.createElement('span', { style: { fontSize: '24px' } }, '🛒'),
-            // Cart badge - shows item count if >0.
-            cartItems.length > 0 && React.createElement('span', {
-              className: "position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger",
-              style: { fontSize: '12px' }
-            }, cartItems.length.toString())
-          ]),
-
           // Show user panel if logged in.
           user ? React.createElement('div', { className: "d-flex align-items-center" }, [
             // User avatar section.
