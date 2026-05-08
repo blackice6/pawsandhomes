@@ -22,8 +22,7 @@ const Navbar = () => {
   const userRoleId = getUserRoleId(user);
   // getRoleNameById utility - converts role ID to readable name (Customer/Admin).
   const roleName = userRoleId ? getRoleNameById(userRoleId) : "Customer";
-  // isCustomer boolean - true if userRoleId === 4 (customer only cart access).
-  const isCustomer = userRoleId === 4;
+
 
   // handleLogout function - clears auth and redirects to signin.
   const handleLogout = () => {
@@ -44,7 +43,7 @@ const Navbar = () => {
     // Container-fluid for full width with internal padding control.
     React.createElement('div', { className: "container-fluid" }, [
       // Flex layout for logo + nav + auth buttons + mobile toggle.
-      React.createElement('div', { className: "d-flex justify-content-between align-items-center py-3" }, [
+React.createElement('div', { className: "d-flex justify-content-between align-items-center py-1" }, [
         // Left side: brand
         React.createElement(Link, { className: "navbar-brand d-flex align-items-center text-decoration-none", to: "/" }, [
           // Logo image with rounded glow effect.
