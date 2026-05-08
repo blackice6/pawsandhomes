@@ -8,7 +8,7 @@ const location = useLocation();
 const state = location.state || {};
 const { cart, product } = state;
   const navigate = useNavigate();
-  const img_url = "https://kbenkamotho.alwaysdata.net/static/images/";
+  const img_url = "https://blackice6.alwaysdata.net/static/images/";
   const total = cart ? cart.reduce((sum, item) => sum + parseFloat(item.product_cost) * item.quantity, 0) : parseFloat(product ? product.product_cost : 0);
   const isCart = cart && cart.length > 0;
   const checkoutTitle = isCart ? 'Cart Checkout' : (product ? product.product_name : 'Checkout');
@@ -31,7 +31,7 @@ const { cart, product } = state;
 formdata.append("amount", total.toFixed(0));
 
       const response = await axios.post(
-        "https://blackice6.alwaysdata.net/api/mpesa_payment",
+        "https://kbenkamotho.alwaysdata.net/api/mpesa_payment",
         formdata
       );
 
